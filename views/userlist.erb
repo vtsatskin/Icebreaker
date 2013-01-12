@@ -10,7 +10,7 @@
     </h4>
     <div class="person-info" primary="<%= p[:intro] %>" secondary="moredata">
       <span><%= p[:intro] %></span>
-      <span><%= p[:mutual_likes].count.to_s + 'Mutual Likes' %></span>
+      <span><%= p[:mutual_likes].nil? ? 0 : p[:mutual_likes].count.to_s + ' Mutual Likes' %></span>
     </div>
   </div>
 <% end %>
@@ -24,31 +24,33 @@
   var iterator = null;
   var iteratorIndex = 0;
 
-  var hoverOver = function() {
-    var self = $(this);
-    iterator = setInterval(function() {
-      var max = self.find('.person-info span').length - 1;
+  <% if p && p[:mutual_likes].nil? %>
+    var hoverOver = function() {
+      var self = $(this);
+      iterator = setInterval(function() {
+        var max = self.find('.person-info span').length - 1;
 
-      if((iteratorIndex % 2 ) === 1) {
+        if((iteratorIndex % 2 ) === 1) {
 
-        self.find('.person-info span:last').fadeOut(250, function() {
-          self.find('.person-info span:first').fadeIn(250);
-        });
-      } else {
-        self.find('.person-info span:first').fadeOut(250, function() {
-          self.find('.person-info span:last').fadeIn(250);
-        });
-      }
+          self.find('.person-info span:last').fadeOut(250, function() {
+            self.find('.person-info span:first').fadeIn(250);
+          });
+        } else {
+          self.find('.person-info span:first').fadeOut(250, function() {
+            self.find('.person-info span:last').fadeIn(250);
+          });
+        }
 
-      iteratorIndex++;
-    }, 1200);
-  }
+        iteratorIndex++;
+      }, 1400);
+    }
 
-  var hoverAway = function() {
-    clearInterval(iterator);
-    iterator = null;
-  }
+    var hoverAway = function() {
+      clearInterval(iterator);
+      iterator = null;
+    }
 
-  $('.person').hover(hoverOver, hoverAway);
+    $('.person').hover(hoverOver, hoverAway);
+  <% end %>
 
 </script>
