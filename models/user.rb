@@ -53,8 +53,8 @@ class User
     end
   end
 
-  def get_likes_from_api api
-    likes = api.get_connections("me", "likes")
+  def get_likes_from_api api, limit=200
+    likes = api.get_connections("me", "likes", {:limit => limit})
     if likes && !likes.empty?
       likes.each { |l| self.likes << Like.first_or_create(:id => l['id'], :name => l['name'], :category => l['category']) }
     end
@@ -98,9 +98,9 @@ class User
     intro = ["How long did you live in", "What's your favourite spot in", "Do you miss"].sample
     spot = ["restaurant", "bar", "spot", "thing to do", "park", "mall"].sample
 
-    sentences.push("What's your favourite #{spot} in #{self.current_city_name}?") if match.current_city_id == self.current_city_id
-    sentences.push("#{intro} #{self.hometown_name}?") if match.hometown_id == self.hometown_id
-    sentences.push("We have the same birthday!") if match.birthday == self.birthday
+    sentences.push("What's your favourite #{spot} in #{self.current_city_name}?") if self.current_city_id && match.current_city_id == self.current_city_id
+    sentences.push("#{intro} #{self.hometown_name}?") if self.hometown_id && match.hometown_id == self.hometown_id
+    sentences.push("We have the same birthday!") if match.birthday && match.birthday == self.birthday
     sentences.push("You both like #{mutual_likes.sample.name}!") unless mutual_likes.empty?
 
     groups = mutual_likes.group_by{ |ml| ml.category }
