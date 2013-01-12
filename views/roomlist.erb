@@ -1,27 +1,31 @@
-<% @rooms.each do |p|%>
-  <div id="<%= p[:id] %>" class="room" groupname=<%= p[:name] %>>
-    <h4 class="room-title">
-      <%= p[:name] %>
-    </h4>
-    <div class="room-count">
-      <%= p[:people] %> People
-    </div>
-  </div>
+<% if @rooms && !@rooms.empty? %>
+	<% @rooms.each do |p|%>
+	  <div id="<%= p.id %>" class="room" groupname=<%= p.name %>>
+	    <h4 class="room-title">
+	      <%= p.name %>
+	    </h4>
+	    <div class="room-count">
+	      <%= p.people %> People
+	    </div>
+	  </div>
+	<% end %>
+
+	<script type="text/javascript"> 
+		$('.room').click(function(e) {
+			$('#users-title').html($(e.target).parent().attr('groupname'));
+
+			$.ajax({
+		      type: 'GET',
+		      url: '/room',
+		      data: {
+		        roomname: $('#users-title').html()
+		      },
+		      success: function(data) {
+		        $('#search-view').html(data);
+		      }
+		    });
+		})
+	</script>
+<% else %>
+	No rooms found, why not create one?
 <% end %>
-
-<script type="text/javascript"> 
-	$('.room').click(function(e) {
-		$('#users-title').html($(e.target).parent().attr('groupname'));
-
-		$.ajax({
-	      type: 'GET',
-	      url: '/room',
-	      data: {
-	        roomname: $('#users-title').html()
-	      },
-	      success: function(data) {
-	        $('#search-view').html(data);
-	      }
-	    });
-	})
-</script>

@@ -34,15 +34,22 @@ class User
     self.save
   end
 
-  def get_room_likes
+  def get_room
+    self.get_mutual_likes_in_room.map do |h|
+      {
+        :picture => 'https://fbcdn-profile-a.akamaihd.net/hprofile-ak-snc6/s160x160/223049_10150260199183581_3390501_n.jpg',
+        :url => h[:user].profile_url,
+        :name => h[:user].name,
+        :intro => 'tbd'
+      }
+    end
+  end
+
+  def get_mutual_likes_in_room
     if room = self.room
       (room.users - self).map do |user|
         score = 0
-        puts "self.likes: #{self.likes}"
-        puts "match.likes: #{user.likes}"
-
         mutual_likes = self.likes & user.likes
-        puts "mutual_likes: #{mutual_likes}"
         score += 5 * mutual_likes.count
 
         { :score => score, :user => user, :mutual_likes => mutual_likes }
