@@ -1,6 +1,26 @@
+<% content_for :title do %>
+  Icebreaker - Your Matches
+<% end %>
+
+<% content_for :head do %>
+  <script type="text/javascript" src="js/result.js"></script>
+<% end %>
+
 <% content_for :body do %>
-  <div class="row">
-    <div class="span4">...</div>
-    <div class="span8">...</div>
+  <h1>Icebreaker</h1>
+  <div class="container">
+    <div class="row">
+      <div class="span6">
+        <div class="well">
+          <h3>Search for groups</h3>
+          <input id="group-search" type="text" class="span5" placeholder="Group name">
+          <div class="create-group">
+            Make it yo!
+          </div>
+          <p>Recommended: <b>universityofwaterloo</b>, <b>waterloo</b>, <b>starcraft</b></p>
+        </div>
+      </div>
+      <div class="span6">I have some content here as well</div>
+    </div>
   </div>
 <% end %>

@@ -10,7 +10,12 @@ get '/' do
   erb :index
 end
 
+post '/search' do
+  []
+end
+
 get '/result' do
+  @test = "fuck shit up"
   erb :result
 end
 
