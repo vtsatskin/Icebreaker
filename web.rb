@@ -17,10 +17,27 @@ end
 
 get '/result' do
   @test = "fuck shit up"
-  @matches = [ {
-    'name' => 'Amir Sharif',
-    'likes' => ['cereal', 'programming', 'laptops']
-  }
+  @matches = [
+    {
+      :name => 'Amir Sharif',
+      :likes => ['cereal', 'programming', 'laptops']
+    },
+    {
+      :name => 'Johnny Smith',
+      :likes => ['cereal', 'poo', 'laptops']
+    },
+    {
+      :name => 'Johnny Smith',
+      :likes => ['cereal', 'poo', 'laptops']
+    },
+    {
+      :name => 'Johnny Smith',
+      :likes => ['cereal', 'poo', 'laptops']
+    },
+    {
+      :name => 'Johnny Smith',
+      :likes => ['cereal', 'poo', 'laptops']
+    }
   ]
   erb :result
 end

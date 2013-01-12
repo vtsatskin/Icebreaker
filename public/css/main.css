@@ -13,5 +13,46 @@
 }
 
 .person {
-  width: 50%;
+  display: inline-block;
+  vertical-align: top;
+  width: 160px;
+  height: 160px;
+  margin: 0;
+  background: url('https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn1/c44.44.550.550/s160x160/45365_10152319247320484_1066354769_n.jpg');
+}
+
+.person-info {
+  position: absolute;
+  background: rgba(22, 22, 22, 0.5);
+  color: #fff;
+  z-index: 100;
+  width: 144px;
+  height: 99px;
+  padding: 14px 8px;
+  margin-top: 33px;
+  opacity: 0;
+  -webkit-transition: opacity 250ms;
+}
+
+.person-info:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.person h4 {
+  background-color: rgba(22, 22, 22, 0.5);
+  vertical-align: middle;
+  text-align: center;
+  color: #fff;
+  margin: 0;
+  padding: 4px 0;
+  position: absolute;
+  width: 160px;
+}
+
+.person h4 a {
+  background-color: transparent;
+  font-size: 14px;
+  float: right;
+  margin-right: 2%;
 }

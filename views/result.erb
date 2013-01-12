@@ -30,11 +30,13 @@
 
             <% @matches.each do |p|%>
               <div class="person">
-                <h4>
-                  <%= puts p['name'] %>
+                <h4 class="name">
+                  <%= p[:name] %>
+                  <a href="javascript:void(0)"></a>
                 </h4>
-                <p>
-                </p>
+                <div class="person-info">
+                  Likes to get down. Lives near you. Enjoys cereal. Will never let you down.
+                </div>
               </div>
             <% end %>
           </div>
