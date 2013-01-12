@@ -16,6 +16,7 @@
       if (response.status === 'connected') {
         // connected
         console.log('connected');
+        window.location.href = "/result";
       } else if (response.status === 'not_authorized') {
         // not_authorized
         console.log('not authorized');
@@ -34,16 +35,6 @@
      js.src = "//connect.facebook.net/en_US/all.js";
      ref.parentNode.insertBefore(js, ref);
    }(document));
-
-  function login() {
-    FB.login(function(response) {
-        if (response.authResponse) {
-            // connected
-        } else {
-            // cancelled
-        }
-    });
-  }
 </script>
   <script src="//connect.facebook.net/en_US/all.js"></script>
   <div class="container">
