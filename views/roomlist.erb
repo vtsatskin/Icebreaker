@@ -11,6 +11,7 @@
 
 <script type="text/javascript"> 
 	$('.room').click(function(e) {
+		
 		$('#users-title').html($(e.target).parent().attr('groupname'));
 
 		$.ajax({

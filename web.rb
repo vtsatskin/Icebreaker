@@ -71,7 +71,9 @@ get '/room' do
 end
 
 get '/:name' do
-  @roomTitle = :name
+  if Room.first(:name => params[:name])
+    @roomTitle = :name
+  end
   erb :home
 end
 

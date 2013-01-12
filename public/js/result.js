@@ -56,14 +56,4 @@ $(document).ready(function() {
     $('#group-search').keyup();
   })
 
-
-
-  $('.person').click(function() {
-    var $self = $(this);
-    window.location = $self.attr('fblink');
-  })
-  
-
-
-
 });

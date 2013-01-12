@@ -8,3 +8,10 @@
     </div>
   </div>
 <% end %>
+
+<script type="text/javascript">
+  $('.person').click(function() {
+    var $self = $(this);
+    window.location = $self.attr('fblink');
+  })
+</script>
