@@ -17,7 +17,7 @@
 
 		window.history.pushState(null, roomname, "/" + roomname);
 
-		$('#users-title').html(roomname);
+		$('#users-title').html(roomname).next().html('Hover for icebreaker, click for facebook');
 
 		$.ajax({
 	      type: 'GET',
