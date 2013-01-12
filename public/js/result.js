@@ -20,7 +20,7 @@ $(document).ready(function() {
       $('.create-group').slideUp();
     }
     else {
-      $('#create-group-btn').text('create ' + query.replace(/ /g,'').);
+      $('#create-group-btn').text('create ' + query.replace(/ /g,''));
       $('.create-group').slideDown();
     }
 
