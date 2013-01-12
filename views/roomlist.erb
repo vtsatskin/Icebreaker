@@ -15,6 +15,8 @@
 		
 		var roomname = $(e.target).parent().attr('groupname');
 
+		window.history.pushState(null, roomname, "/" + roomname);
+
 		$('#users-title').html(roomname);
 
 		$.ajax({
@@ -27,7 +29,20 @@
 	        $('#search-view').html(data);
 	      }
 	    });
+
+		$.ajax({
+	      type: 'GET',
+	      url: '/search',
+	      data: {
+	        query: $('#group-search').val();
+	      },
+	      success: function(data) {
+	        $('#room-search').html(data);
+	      }
+	    });
+
 	})
+	
 </script>
 
 <% else %>

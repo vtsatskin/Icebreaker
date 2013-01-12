@@ -37,7 +37,7 @@ $(document).ready(function() {
       },
       success: function(data) {
         $('#room-search').html(data)
-        if ($('#room-search').children(0).children(0).text() == query) {
+        if ($('#room-search').children(0).children(0).html() == query) {
           $('.create-group').slideUp();
         }
       }
