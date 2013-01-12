@@ -39,7 +39,6 @@ DataMapper.finalize
         api = Koala::Facebook::API.new(user.access_token)
         begin
           profile = api.get_object('me')
-          puts profile.inspect
           if profile['id'] == user.id
             @current_user = user
             @api = api
@@ -64,7 +63,6 @@ DataMapper.finalize
           @current_user = User.get_or_create_by_fbid(fbid, @api, session)
           @current_user.access_token = info['access_token']
           # @current_user.token_expire = Time.now.to_i + info['expires'].to_i
-          puts @current_user.inspect
           @current_user.save
           session[:user_id] = @current_user.id
         end

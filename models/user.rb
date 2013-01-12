@@ -75,13 +75,14 @@ class User
 
   def get_mutual_likes_in_room
     if room = self.room
-      (room.users - self).map do |user|
+      mutual_likes = (room.users - self).map do |user|
         score = 0
         mutual_likes = self.likes & user.likes
         score += 5 * mutual_likes.count
 
         { :score => score, :user => user, :mutual_likes => mutual_likes }
       end
+      mutual_likes.sort_by { |h| -h[:score] }
     else
       []
     end
@@ -92,31 +93,40 @@ class User
   end
 
   def get_icebreakers match, mutual_likes
-    intro = ["How long did you live in", "What's your favourite spot in", "Do you miss"][Random.rand(3)]
-    spot = ["restaurant", "bar", "spot", "thing to do", "park", "mall"][Random.rand(6)]
-
     sentences = []
+
+    intro = ["How long did you live in", "What's your favourite spot in", "Do you miss"].sample
+    spot = ["restaurant", "bar", "spot", "thing to do", "park", "mall"].sample
+
     sentences.push("What's your favourite #{spot} in #{self.current_city_name}?") if match.current_city_id == self.current_city_id
-    sentences.push("#{intro} #{self.hometown_name}") if match.hometown_id == self.hometown_id
+    sentences.push("#{intro} #{self.hometown_name}?") if match.hometown_id == self.hometown_id
     sentences.push("We have the same birthday!") if match.birthday == self.birthday
-    sentences.push("You both like #{mutual_likes[Random.rand(mutual_likes.count - 1)].name}.") if mutual_likes.count > 1
+    sentences.push("You both like #{mutual_likes.sample.name}!") unless mutual_likes.empty?
 
     groups = mutual_likes.group_by{ |ml| ml.category }
     groups.each do |k,v|
       case(k)
       when "Movie"
-        sentences.push("What was your favourite scene in #{v[Random.rand(v.count - 1)]}?") if v.count > 1
+        sentences.push("What was your favourite scene in #{v.sample}?") unless v.empty?
       when "Sport"
-        sentences.push("Who's you're favorite member of #{v[Random.rand(v.count - 1)]}?") if v.count > 1
+        sentences.push("Who's you're favorite member of #{v.sample}?") unless v.empty?
       when "Musician/band"
-        sentences.push("What's your favorite song by #{v[Random.rand(v.count - 1)]}?") if v.count > 1
+        sentences.push("What's your favorite song by #{v.sample}?") unless v.empty?
       when "Musical genre"
-        sentences.push("What do you think is the most interesting about #{v[Random.rand(v.count - 1)]}?") if v.count > 1
+        sentences.push("What do you think is the most interesting about #{v.sample}?") unless v.empty?
       when "Tv show"
-        sentences.push("What's was your favorite episode of #{v[Random.rand(v.count - 1)]}?") if v.count > 1
+        sentences.push("What's was your favorite episode of #{v.sample}?") unless v.empty?
       end
     end
-    sentences[sentences.count > 1 ? Random.rand(sentences.count - 1) : 0]
+
+    if sentences.empty?
+      sentences.push("What's your favorite colour?")
+      sentences.push("Let's play 20 questions!")
+      sentences.push("Tell me something interesting about yourself!")
+      sentences.push("What's your favorite day of the week?")
+    end
+
+    sentences.sample
   end
 
   def get_results
