@@ -31,8 +31,7 @@ get '/' do
 end
 
 get '/search' do
-  params[:query]
-  @rooms = Room.all.sort_by! { |r| -r.people }
+  @rooms = Room.all(:name =>  params[:query]).sort_by! { |r| -r.people }
   erb :roomlist, :layout => false
 end
 
@@ -117,5 +116,6 @@ get '/:name' do
   else
     @roomTitle = '404'
   end
+
   erb :home
 end
