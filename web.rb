@@ -18,7 +18,8 @@ end
 get '/result' do
   @test = "fuck shit up"
   @matches = [ {
-    'name' => 'Amir Sharif'
+    'name' => 'Amir Sharif',
+    'likes' => ['cereal', 'programming', 'laptops']
   }
   ]
   erb :result

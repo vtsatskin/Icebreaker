@@ -1,3 +1,4 @@
+.env
 *.gem
 *.rbc
 .bundle
@@ -16,5 +17,3 @@ tmp
 .yardoc
 _yardoc
 doc/
-
-.env
