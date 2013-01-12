@@ -26,8 +26,12 @@ class User
   has n, :interests
   has n, :workhistorys
 
-  def get_likes_from_fb
-
+  def get_likes_from_graph graph
+    likes = graph.get_connections("me", "likes")
+    if likes && !likes.empty?
+      likes.each { |l| self.likes << Like.first_or_create(:id => l['id'], :name => l['name'], :category => l['category']) }
+    end
+    self.save
   end
 
   def get_results
