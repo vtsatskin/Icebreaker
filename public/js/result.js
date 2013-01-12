@@ -1,5 +1,4 @@
 $(document).ready(function() {
-
   $.ajax({
     type: 'GET',
     url: '/room',
@@ -12,9 +11,7 @@ $(document).ready(function() {
   });
 
   $('#group-search').keyup(function() {
-    
     var query = $(this).val();
-
     if (autoSearch) {
       autoSearch.abort();
     }
