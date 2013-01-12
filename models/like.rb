@@ -1,6 +1,8 @@
 class Like
   include DataMapper::Resource
  
-  belongs_to :user
+  has n, :users, :through => Resource
   property :id,   String, :key => true
+  property :name, String
+  property :category, String
 end
