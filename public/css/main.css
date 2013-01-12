@@ -1,3 +1,11 @@
+body {
+  background:url('../img/lightpaperfibers.png');
+}
+
+h1 {
+  text-shadow: 0px 0px 5px white;
+}
+
 .jumbotron {
   margin: 60px 0;
   text-align: center;
@@ -6,6 +14,10 @@
 .jumbotron h1 {
   font-size: 72px;
   line-height: 1;
+}
+
+#recommend{
+  margin-top: 30px;
 }
 
 .create-group {
@@ -18,6 +30,7 @@
   width: 160px;
   height: 160px;
   margin: 0;
+  margin-bottom: 5px;
   background: url('https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn1/c44.44.550.550/s160x160/45365_10152319247320484_1066354769_n.jpg');
 }
 

@@ -7,7 +7,7 @@
 <% end %>
 
 <% content_for :body do %>
-  <h1>Icebreaker</h1>
+  <h1 style="margin: 20px 0px">Icebreaker</h1>
   <div class="container">
     <div class="row">
       <div class="span6">
@@ -17,12 +17,12 @@
           <div class="create-group">
             &nbsp;We can't find that group. Why not <a href="javascript:void(0)" id="create-group-btn" >create it</a>?
           </div>
-          <p>Recommended: <a href="#">universityofwaterloo</a>, <a href="#">waterloo</a>, <a href="#">starcraft</a></p>
+          <p id="recommend">Recommended: <a href="#">universityofwaterloo</a>, <a href="#">waterloo</a>, <a href="#">starcraft</a></p>
         </div>
       </div>
       <div class="span6">
         <div id="matches" class="well">
-          <h3>Your matches</h3>
+          <h3 id="users-title" >Choose a room</h3>
           <h4>Click on a user to find out more details.</h4>
 
           <!-- code for a single person -->

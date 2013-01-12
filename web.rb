@@ -15,6 +15,10 @@ post '/search' do
   []
 end
 
+post '/create' do
+  [] #todo: create room code here
+end
+
 get '/result' do
   @test = "fuck shit up"
   @matches = [

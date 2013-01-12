@@ -2,7 +2,12 @@ $(document).ready(function() {
 
   $('#group-search').keyup(function() {
     var query = $(this).val();
-    $.ajax({
+
+    if (autoSearch) {
+      autoSearch.abort();
+    }
+
+    var autoSearch = $.ajax({
       type: 'POST',
       url: '/search',
       data: {
@@ -18,5 +23,30 @@ $(document).ready(function() {
 
     });
   });
+
+  $('#create-group-btn').click(function() {
+    $.ajax({
+      type: 'POST',
+      url: '/create',
+      data: {
+        name: $('#group-search').val()
+      },
+      succes: function(data) {
+        $('#group-search').after(data)
+      }
+    })
+  })
+
+  $('.group-name').click(function() {
+    $('users-title').text(this.text());
+  })
+
+  $('#recommend a').click(function() {
+    $('#group-search').val(this.text);
+    $('#group-search').keyup();
+  })
+  
+
+
 
 });
