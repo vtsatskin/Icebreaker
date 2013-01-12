@@ -81,6 +81,11 @@ get '/room' do
   erb :userlist, :layout => false
 end
 
+get '/:name' do
+  @roomTitle = :name
+  erb :home
+end
+
 get '/authenticated' do
   koala = Koala::Facebook::OAuth.new(ENV['FB_APP_ID'], ENV['FB_APP_SECRET'])
   user_details = koala.get_user_info_from_cookies(cookies)

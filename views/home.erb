@@ -26,12 +26,28 @@
       
       <div class="span6">
         <div id="matches" class="well">
-          <h3 id="users-title" >Choose a Room</h3>
-          <h4>Click someone you like for their facebook</h4>
+          <h3 id="users-title" ><%= @roomTitle? @roomTitle : 'Choose a Room' %></h3>
+          <h4>Hover for icebreaker, click for facebook</h4>
           <div id="search-view"> </div>
         </div>
       </div>
 
     </div>
   </div>
+
+  <%= if @roomTitle %>
+    <script type="text/javascript">
+      $.ajax({
+          type: 'GET',
+          url: '/room',
+          data: {
+            roomname: $('#users-title').html()
+          },
+          success: function(data) {
+            $('#search-view').html(data);
+          }
+        });
+    </script>
+  <% end %>
+  
 <% end %>
