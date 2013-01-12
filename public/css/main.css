@@ -9,10 +9,6 @@ h1 {
   width: 400px;
 }
 
-.profile_me h3 span {
-  margin-right: 22px;
-}
-
 .profile_me .pic {
   width: 140px;
   height: 140px;
@@ -20,6 +16,7 @@ h1 {
   vertical-align: middle;
   background-color: blue;
   box-shadow: 0 0 0px 1px #AAA;
+  margin-top: 15px;
 }
 
 #search-view-loader {
