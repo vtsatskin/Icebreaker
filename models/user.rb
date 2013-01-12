@@ -26,9 +26,9 @@ class User
   has n, :interests
   has n, :workhistorys
 
-  def self.get_or_create_by_fbid(fbid, api)
+  def self.get_or_create_by_fbid(fbid, api, session)
     if u = User.get(fbid)
-      u
+      return u
     else
       me = api.get_object("me")
       u = User.create({
@@ -36,13 +36,17 @@ class User
         :name => me['name'],
         :profile_url => me['link'],
         :gender => me['gender'],
-        :session_id => cookies['rack.session']
+        :session_id => session[:session_id]
       })
+
+      u.get_likes_from_api api
+
+      u
     end
   end
 
-  def get_likes_from_graph graph
-    likes = graph.get_connections("me", "likes")
+  def get_likes_from_api api
+    likes = api.get_connections("me", "likes")
     puts "likes: #{likes}"
     if likes && !likes.empty?
       likes.each { |l| self.likes << Like.first_or_create(:id => l['id'], :name => l['name'], :category => l['category']) }
