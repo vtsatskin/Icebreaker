@@ -9,8 +9,10 @@ class User
   property :relationship,   String
   property :name,           String
   property :email,          String
-  property :hometown,       String
-  property :current_city,   String
+  property :hometown_id,       String
+  property :hometown_name,       String
+  property :current_city_id,   String
+  property :current_city_name,   String
   property :birthday,       String
   property :picture_link,   String
   property :access_token,   String, :length => 255
@@ -36,6 +38,12 @@ class User
         :name => me['name'],
         :profile_url => me['link'],
         :gender => me['gender'],
+        :hometown_id => me['hometown']? me['hometown'].id : nil,
+        :current_city_id => me['location']? me['location'].id : nil,
+        :hometown_name => me['hometown']? me['hometown'].name : nil,
+        :current_city_name => me['location']? me['location'].name : nil,
+        :single => me['relationship_status']? (me['relationship_status'] == 'Single') : nil,
+        :birthday => me['birthday']? me['birthday'] : nil,
         :session_id => session[:session_id]
       })
 
