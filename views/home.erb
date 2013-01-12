@@ -34,20 +34,5 @@
 
     </div>
   </div>
-
-  <%= if @roomTitle %>
-    <script type="text/javascript">
-      $.ajax({
-          type: 'GET',
-          url: '/room',
-          data: {
-            roomname: $('#users-title').html()
-          },
-          success: function(data) {
-            $('#search-view').html(data);
-          }
-        });
-    </script>
-  <% end %>
   
 <% end %>
