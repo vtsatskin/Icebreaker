@@ -66,13 +66,13 @@ class User
         if self.gender != match.gender and self.single == true and match.single == true
           score += 20
         end
-        if self.hometown == match.hometown
+        if self.hometown == match.hometown and self.hometown != nil
           score += 15
         end
-        if self.current_city == match.current_city
+        if self.current_city == match.current_city and self.current_city != nil
           score += 5
         end
-        if self.birthday == match.birthday
+        if self.birthday == match.birthday and self.birthday != nil
           score += 5
         end
 
@@ -113,11 +113,41 @@ class User
             score += 10
           end
         end
-        
-        { :score => score, :user => match, :mutual_likes => mutual_likes }
+        #GENERATE SENTENCE HERE
+        case Random.rand(3)
+        when 1
+          if match.current_city.id == self.current_city.id
+            sentence = "You both live in #{self.current_city.name}"
+          elsif match.hometown.id == self.hometown.id
+            sentence = "You both live in #{self.hometown.name}"
+          else
+            if mutual_likes.count > 0
+              sentence = "You both like #{mutual_likes[Random.rand(mutual_likes.count - 1)].name}."
+            else
+              sentence = "You don't seem to have much in common"
+            end
+          end
+        when 2
+          if match.birthday == self.birthday
+            sentence = "You have the same birthday!"
+          else
+            if mutual_likes.count > 0
+              sentence = "You both like #{mutual_likes[Random.rand(mutual_likes.count - 1)].name}."
+            else
+              sentence = "You don't seem to have much in common"
+            end
+          end
+        when 3
+          if mutual_likes.count > 0
+            sentence = "You both like #{mutual_likes[Random.rand(mutual_likes.count - 1)].name}."
+          end
+          else
+            sentence = "You don't seem to have much in common"
+          end
+        end
+        { :score => score, :sentence => sentence, :user => match, :mutual_likes => mutual_likes }
       end
     else
       []
-    end
   end
 end
