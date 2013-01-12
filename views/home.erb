@@ -1,0 +1,37 @@
+<% content_for :title do %>
+  Icebreaker - Your Matches
+<% end %>
+
+<% content_for :head do %>
+  <script type="text/javascript" src="js/result.js"></script>
+<% end %>
+
+<% content_for :body do %>
+  <h1 style="margin: 20px 0px">Icebreaker</h1>
+  <div class="container">
+    <div class="row">
+      
+      <div class="span6">
+        <div class="well">
+          <h3>Search for groups</h3>
+          <h4>Join one to break the ice with those around</h4>
+          <input id="group-search" type="text" class="span5" placeholder="Group name">
+          <div class="create-group">
+            &nbsp;You can also <a href="javascript:void(0)" id="create-group-btn" ></a>
+          </div>
+          <div id="room-search"></div>
+          <p id="recommend">Recommended: <a href="#">universityofwaterloo</a>, <a href="#">waterloo</a>, <a href="#">starcraft</a></p>
+        </div>
+      </div>
+      
+      <div class="span6">
+        <div id="matches" class="well">
+          <h3 id="users-title" >Choose a Room</h3>
+          <h4>Click someone you like for their facebook</h4>
+          <div id="search-view"> </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+<% end %>
