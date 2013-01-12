@@ -21,6 +21,13 @@
   background: url('https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn1/c44.44.550.550/s160x160/45365_10152319247320484_1066354769_n.jpg');
 }
 
+.profile-pic {
+  width: 80px;
+  height: 80px;
+  background-color: white;
+  margin-right: 15px;
+}
+
 .person-info {
   position: absolute;
   background: rgba(22, 22, 22, 0.5);
