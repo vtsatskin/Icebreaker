@@ -144,9 +144,11 @@ class User
         case Random.rand(3)
         when 1
           if match.current_city.id == self.current_city.id
-            sentence = "You both live in #{self.current_city.name}"
+            spot = ["restaurant", "bar", "spot"][Random.rand(3)]
+            sentence = "What's your favourite #{spot} in #{self.current_city.name}"
           elsif match.hometown.id == self.hometown.id
-            sentence = "You both live in #{self.hometown.name}"
+            intro = ["How long did you live in", "What's your favourite spot in", "Do you miss"][Random.rand(3)]
+            sentence = "#{intro} #{self.hometown.name}"
           else
             if mutual_likes.count > 0
               sentence = "You both like #{mutual_likes[Random.rand(mutual_likes.count - 1)].name}."

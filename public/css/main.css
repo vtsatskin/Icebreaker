@@ -22,6 +22,14 @@ h1 {
   box-shadow: 0 0 0px 1px #AAA;
 }
 
+#search-view-loader {
+  display: none;
+  margin: 0 auto;
+  background: url('images/loading.gif');
+  width: 128px;
+  height: 128px;
+}
+
 h3 {
   color: #30605E;
 }

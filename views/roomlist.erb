@@ -12,23 +12,17 @@
 
 <script type="text/javascript">
 	$('.room').click(function(e) {
-
 		var roomname = $(e.target).parent().attr('groupname');
 
 		window.history.pushState(null, roomname, "/" + roomname);
 
 		$('#users-title').html(roomname).next().html('Hover for icebreaker, click for facebook');
 
-		$.ajax({
-	      type: 'GET',
-	      url: '/room',
-	      data: {
-	        roomname: roomname
-	      },
-	      success: function(data) {
-	        $('#search-view').html(data);
-	      }
-	    });
+		$('#search-view-loader').show();
+		$('#search-view').load('/room/' + roomname, function(data) {
+		  $(this).hide().fadeIn(500);
+		  $('#search-view-loader').hide();
+		});
 
 		$.ajax({
 	      type: 'GET',

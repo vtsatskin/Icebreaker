@@ -1,13 +1,9 @@
 $(document).ready(function() {
-  $.ajax({
-    type: 'GET',
-    url: '/room',
-    data: {
-      roomname: $('#users-title').html()
-    },
-    success: function(data) {
-      $('#search-view').html(data);
-    }
+
+  $('#search-view-loader').show();
+  $('#search-view').load('/room/' + roomname, function(data) {
+    $(this).hide().fadeIn(500);
+    $('#search-view-loader').hide();
   });
 
   $('#group-search').keyup(function() {

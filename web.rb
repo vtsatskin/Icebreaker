@@ -30,9 +30,9 @@ DataMapper.finalize
       ENV['FB_APP_SECRET']
       # "#{request.protocol}#{request.host_with_port}/"
     )
-    
+
     user = session[:user_id] && User.get(session[:user_id])
-    
+
     if user
       access_token = user.access_token
       if user.access_token # && user.token_expire > Time.now.to_i
@@ -60,7 +60,7 @@ DataMapper.finalize
         unless info.nil?
           @api = Koala::Facebook::API.new(info['access_token'])
           fbid = info.nil? ? false : info['user_id']
-        
+
           @current_user = User.get_or_create_by_fbid(fbid, @api, session)
           @current_user.access_token = info['access_token']
           # @current_user.token_expire = Time.now.to_i + info['expires'].to_i
@@ -82,7 +82,7 @@ DataMapper.finalize
 #   puts "cookies: #{cookies}"
 #   u = nil
 #   koala = Koala::Facebook::OAuth.new(ENV['FB_APP_ID'], ENV['FB_APP_SECRET'])
-  
+
 #   user_details = nil
 
 #   unless u = User.first(:session_id => cookies['rack.session'])
@@ -131,9 +131,9 @@ post '/create' do
   end
 end
 
-get '/room' do
+get '/room/:roomname' do
   setup_user cookies, session
-  if logged_in? && r = Room.first(:name => params[:roomname])
+  if logged_in? && r = Room.first(:name => :roomname)
     current_user.room = r
     current_user.save
 
