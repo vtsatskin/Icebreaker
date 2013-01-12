@@ -10,20 +10,21 @@
   <h1 style="margin: 20px 0px">Icebreaker</h1>
   <div class="container">
     <div class="row">
-      
+
       <div class="span6">
         <div class="well">
           <h3>Search for groups</h3>
-          <h4>Join one to break the ice with those around</h4>
-          <input id="group-search" type="text" class="span5" placeholder="Group name" value="<%= @roomTitle %>">
+          <input id="group-search" type="text" class="span5" placeholder="Group name">
+          <h4>Trouble searching? Here are some popular groups to get started</h4>
           <div class="create-group">
             &nbsp;You can also <a href="javascript:void(0)" id="create-group-btn" ></a>
           </div>
-          <div id="room-search"></div>
-          <p id="recommend">Recommended: <a href="#">uwaterloo</a>, <a href="#">waterloo</a>, <a href="#">starcraft</a></p>
+          <div id="room-search">
+
+          </div>
         </div>
       </div>
-      
+
       <div class="span6">
         <div id="matches" class="well">
           <h3 id="users-title" ><%= @roomTitle? @roomTitle : 'Choose a Group' %></h3>
@@ -42,5 +43,5 @@
 
     </div>
   </div>
-  
+
 <% end %>

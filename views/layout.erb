@@ -20,6 +20,16 @@
         <%= yield_content :head %>
     </head>
     <body>
+        <% if @current_user %>
+            <div class="profile_me">
+                <h3>
+                    <span>Hello, <%= @current_user.name %></span>
+                    <img class="pic" src="<%= @current_user.picture_link %>">
+                    </img>
+                </h3>
+            </div>
+        <% end %>
+
         <!--[if lt IE 7]>
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
