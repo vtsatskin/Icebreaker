@@ -187,7 +187,7 @@ get '/:name' do
   setup_user cookies, session
   if logged_in?
     @roomTitle = params[:name]
-    @exists = Room.first(:name => params[:roomname]) ? true : false
+    @exists = (r = Room.first(:name => params[:name])) ? true : false
     erb :home
   else
     redirect :/
