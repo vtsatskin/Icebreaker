@@ -6,7 +6,7 @@ h1 {
   position: absolute;
   top: 0;
   right: 30px;
-  width: 400px;
+  min-width: 400px;
 }
 
 .profile_me .pic {
@@ -103,6 +103,14 @@ h3 {
   -webkit-transition: opacity 250ms;
 }
 
+.person-info > span {
+  display: none;
+}
+
+.person-info > span:first-child {
+  display: block;
+}
+
 .person-info:hover {
   opacity: 1;
   cursor: pointer;
@@ -118,6 +126,8 @@ h3 {
   position: absolute;
   width: 160px;
   margin-top: 127px;
+  height: 25px;
+  overflow: hidden;
 }
 
 .person h4 a {
