@@ -1,5 +1,6 @@
 source :rubygems
 gem 'sinatra'
+gem 'sinatra-contrib'
 gem 'bundler'
 
 gem 'data_mapper', '1.2.0'

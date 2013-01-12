@@ -1,4 +1,6 @@
 Bundler.require()
+require "sinatra"
+require "sinatra/content_for"
 
 configure :development do
   DataMapper.setup :development, 'sqlite://db/icebreak_development'
