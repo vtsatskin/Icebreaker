@@ -1,6 +1,6 @@
 <% if @rooms && !@rooms.empty? %>
 	<% @rooms.each do |p|%>
-	  <div id="<%= p.id %>" class="room" groupname=<%= p.name %>>
+	  <div id="<%= p.id %>" class="room" data-groupname=<%= p.name %>>
 	    <h4 class="room-title">
 	      <%= p.name %>
 	    </h4>
@@ -12,14 +12,14 @@
 
 <script type="text/javascript">
 	$('.room').click(function(e) {
-		var roomname = $(e.target).parent().attr('groupname');
-
+		var roomname = $(this).data('groupname');
 		window.history.pushState(null, roomname, "/" + roomname);
 
 		$('#users-title').html(roomname).next().html('Hover for icebreaker, click for facebook');
 
 		$('#search-view-loader').show();
 		$('#search-view').load('/room/' + roomname, function(data) {
+			alert('fade');
 		  $(this).hide().fadeIn(500);
 		  $('#search-view-loader').hide();
 		});

@@ -1,7 +1,9 @@
 $(document).ready(function() {
 
   $('#search-view-loader').show();
+  var roomname = $.trim($('#users-title').text());
   $('#search-view').load('/room/' + roomname, function(data) {
+    alert('fadeee');
     $(this).hide().fadeIn(500);
     $('#search-view-loader').hide();
   });
@@ -27,7 +29,6 @@ $(document).ready(function() {
         query: query
       },
       success: function(data) {
-        console.log(data);
         $('#room-search').html(data);
         if ($.trim($('#room-search').children(0).children(0).html()) == query) {
           $('.create-group').slideUp();

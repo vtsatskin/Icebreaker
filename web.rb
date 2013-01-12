@@ -133,7 +133,7 @@ end
 
 get '/room/:roomname' do
   setup_user cookies, session
-  if logged_in? && r = Room.first(:name => :roomname)
+  if logged_in? && r = Room.first(:name => params[:roomname])
     current_user.room = r
     current_user.save
 

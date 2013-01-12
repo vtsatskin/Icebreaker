@@ -1,3 +1,6 @@
+<% if @matches.empty? %>
+  <h4>Looks like your the first to this page.</h4>
+<% end %>
 <% @matches.each do |p|%>
   <div class="person" style=" background-image: url(<%= p[:picture] %>)" fblink="<%= p[:url] %>">
     <h4 class="name">
@@ -19,11 +22,11 @@
         var $self = $(this);
         var t = setTimeout(function() {
           $self.find('span').fadeout(200,$(this).html($self.find('.person-info').attr('secondary').fadein(200))
-        }, 2000); 
-      }, {  
+        }, 2000);
+      }, {
         $(this).html($self.find('.person-info').attr('primary'))
       }
     }
-      
+
   })
 </script>

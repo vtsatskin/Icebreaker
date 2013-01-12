@@ -5,7 +5,7 @@ h1 {
 .profile_me {
   position: absolute;
   top: 0;
-  right: 14px;
+  right: 30px;
   width: 400px;
 }
 
@@ -25,7 +25,7 @@ h1 {
 #search-view-loader {
   display: none;
   margin: 0 auto;
-  background: url('images/loading.gif');
+  background: url('../img/loading.gif');
   width: 128px;
   height: 128px;
 }
