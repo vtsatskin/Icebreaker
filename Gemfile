@@ -3,6 +3,7 @@ gem 'sinatra'
 gem 'sinatra-contrib'
 gem 'bundler'
 gem 'koala'
+gem 'thin'
 
 gem 'data_mapper', '1.2.0'
 
