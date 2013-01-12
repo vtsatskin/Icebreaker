@@ -26,9 +26,15 @@ get '/result' do
 end
 
 get '/authenticated' do
-  koala = Koala::Facebook::OAuth.new(ENV['FB_APP_ID'], ENV['FB_APP_SECRET'])
+  @koala = Koala::Facebook::OAuth.new(ENV['FB_APP_ID'], ENV['FB_APP_SECRET'])
+  user_details = @koala.get_user_info_from_cookies(cookies)
+  if user_details
+    @graph = Koala::Facebook::API.new(user_details['access_token'])
+    @graph.get_object("me")
+  else
+    "something fucked up"
+  end
 
-  puts cookies
   erb :authenticated
 end
 
