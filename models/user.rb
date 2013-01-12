@@ -38,10 +38,10 @@ class User
         :name => me['name'],
         :profile_url => me['link'],
         :gender => me['gender'],
-        :hometown_id => me['hometown']? me['hometown'].id : nil,
-        :current_city_id => me['location']? me['location'].id : nil,
-        :hometown_name => me['hometown']? me['hometown'].name : nil,
-        :current_city_name => me['location']? me['location'].name : nil,
+        :hometown_id => (me['hometown'] ? me['hometown']['id'] : nil),
+        :current_city_id => me['location'] ? me['location']['id'] : nil,
+        :hometown_name => me['hometown'] ? me['hometown']['name'] : nil,
+        :current_city_name => me['location']? me['location']['name'] : nil,
         :single => me['relationship_status']? (me['relationship_status'] == 'Single') : nil,
         :birthday => me['birthday']? me['birthday'] : nil,
         :session_id => session[:session_id]
@@ -55,7 +55,6 @@ class User
 
   def get_likes_from_api api
     likes = api.get_connections("me", "likes")
-    puts "likes: #{likes}"
     if likes && !likes.empty?
       likes.each { |l| self.likes << Like.first_or_create(:id => l['id'], :name => l['name'], :category => l['category']) }
     end
@@ -65,7 +64,7 @@ class User
   def get_room
     self.get_mutual_likes_in_room.map do |h|
       {
-        :picture => h[:user].profile_picture,
+        :picture => 'https://fbcdn-profile-a.akamaihd.net/hprofile-ak-snc6/s160x160/223049_10150260199183581_3390501_n.jpg',
         :url => h[:user].profile_url,
         :name => h[:user].name,
         :intro => 'tbd'
@@ -104,11 +103,7 @@ class User
           score += 5
         end
 
-        puts "self.likes: #{self.likes}"
-        puts "match.likes: #{match.likes}"
-
         mutual_likes = self.likes & match.likes
-        puts "mutual_likes: #{mutual_likes}"
         score += 5 * mutual_likes.count
 
         self.educations.each do |education|
@@ -177,9 +172,5 @@ class User
       end
     else
       []
-  end
-
-  def profile_picture
-    "http://graph.facebook.com/#{id}/picture?height=160&weight=160"
   end
 end

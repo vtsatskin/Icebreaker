@@ -16,7 +16,7 @@ function login() {
       } else {
         // cancelled
       }
-  }, {scope: 'user_likes,user_birthday,about_me,user_hometown,user_location'});
+  }, {scope: 'user_likes,user_birthday,user_about_me,user_hometown,user_location'});
 }
 
 $(function(){
