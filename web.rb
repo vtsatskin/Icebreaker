@@ -9,3 +9,7 @@ end
 get '/result' do
   erb :result
 end
+
+get '/logintest' do
+  erb :logintest
+end
