@@ -1,17 +1,15 @@
 $(document).ready(function() {
 
-  if ($('#users-title').html() != 'Choose a Room') {
-      $.ajax({
-      type: 'GET',
-      url: '/room',
-      data: {
-        roomname: $('#users-title').html()
-      },
-      success: function(data) {
-        $('#search-view').html(data);
-      }
-    });
-  }
+  $.ajax({
+    type: 'GET',
+    url: '/room',
+    data: {
+      roomname: $('#users-title').html()
+    },
+    success: function(data) {
+      $('#search-view').html(data);
+    }
+  });
 
   $('#group-search').keyup(function() {
     

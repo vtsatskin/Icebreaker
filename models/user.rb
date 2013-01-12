@@ -65,7 +65,7 @@ class User
   def get_room
     self.get_mutual_likes_in_room.map do |h|
       {
-        :picture => 'https://fbcdn-profile-a.akamaihd.net/hprofile-ak-snc6/s160x160/223049_10150260199183581_3390501_n.jpg',
+        :picture => h[:user].profile_picture,
         :url => h[:user].profile_url,
         :name => h[:user].name,
         :intro => 'tbd'
@@ -177,5 +177,9 @@ class User
       end
     else
       []
+  end
+
+  def profile_picture
+    "http://graph.facebook.com/#{id}/picture?height=160&weight=160"
   end
 end
