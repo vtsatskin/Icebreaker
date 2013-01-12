@@ -36,7 +36,8 @@ $(document).ready(function() {
         query: query
       },
       success: function(data) {
-        $('#room-search').html(data)
+        console.log(data);
+        $('#room-search').html(data);
         if ($('#room-search').children(0).children(0).html() == query) {
           $('.create-group').slideUp();
         }
@@ -56,17 +57,16 @@ $(document).ready(function() {
       success: function(data) {
         $('#room-search').prepend(data);
       }
-    })
-  })
+    });
+  });
 
   $('.room').click(function() {
     alert('up');
-    $('#users-title').text(this.text());
-  })
+    $('#users-title').text($(this).text());
+  });
 
   $('#recommend a').click(function() {
     $('#group-search').val(this.text);
     $('#group-search').keyup();
-  })
-
+  });
 });
