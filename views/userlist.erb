@@ -24,7 +24,6 @@
   var iterator = null;
   var iteratorIndex = 0;
 
-  <% if p && !p[:mutual_likes].nil? %>
     var hoverOver = function() {
       var self = $(this);
       iterator = setInterval(function() {
@@ -42,7 +41,7 @@
         }
 
         iteratorIndex++;
-      }, 1400);
+      }, 2300);
     }
 
     var hoverAway = function() {
@@ -51,6 +50,5 @@
     }
 
     $('.person').hover(hoverOver, hoverAway);
-  <% end %>
 
 </script>
