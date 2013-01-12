@@ -1,6 +1,7 @@
 source :rubygems
 gem 'sinatra'
 gem 'bundler'
+
 gem 'data_mapper', '1.2.0'
 
 group :development do
@@ -12,5 +13,3 @@ group :production do
   gem 'dm-postgres-adapter', '1.2.0'
   gem 'pg', '0.13.2'
 end
-
-
