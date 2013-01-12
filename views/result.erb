@@ -10,41 +10,28 @@
   <h1 style="margin: 20px 0px">Icebreaker</h1>
   <div class="container">
     <div class="row">
+      
       <div class="span6">
-<!--         <div class="well">
-          <h2><img class="profile-pic" src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn1/c44.44.550.550/s160x160/45365_10152319247320484_1066354769_n.jpg" alt="me"/>Hello, <%= @me[:first_name] %></h2>
-        </div> -->
         <div class="well">
           <h3>Search for groups</h3>
           <h4>Join one to break the ice with those around</h4>
           <input id="group-search" type="text" class="span5" placeholder="Group name">
           <div class="create-group">
-            &nbsp;We can't find that group. Why not <a href="javascript:void(0)" id="create-group-btn" >create it</a>?
+            &nbsp;You can also <a href="javascript:void(0)" id="create-group-btn" ></a>
           </div>
+          <div id="room-search"></div>
           <p id="recommend">Recommended: <a href="#">universityofwaterloo</a>, <a href="#">waterloo</a>, <a href="#">starcraft</a></p>
         </div>
       </div>
+      
       <div class="span6">
         <div id="matches" class="well">
-          <h3 id="users-title" >Choose a room</h3>
+          <h3 id="users-title" >Choose a Room</h3>
           <h4>Click someone you like for their facebook</h4>
-
-          <!-- code for a single person -->
-          <div id="search-view">
-            <% @matches.each do |p|%>
-              <div class="person" style=" background-image: url(<%= p[:picture] %>)" fblink="<%= p[:url] %>">
-                <h4 class="name">
-                  <%= p[:name] %>
-                </h4>
-                <div class="person-info">
-                  <%= p[:intro] %>
-                </div>
-              </div>
-            <% end %>
-          </div>
-
+          <div id="search-view"> </div>
         </div>
       </div>
+
     </div>
   </div>
 <% end %>

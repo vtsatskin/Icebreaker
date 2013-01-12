@@ -1,0 +1,10 @@
+<% @matches.each do |p|%>
+  <div class="person" style=" background-image: url(<%= p[:picture] %>)" fblink="<%= p[:url] %>">
+    <h4 class="name">
+      <%= p[:name] %>
+    </h4>
+    <div class="person-info">
+      <%= p[:intro] %>
+    </div>
+  </div>
+<% end %>

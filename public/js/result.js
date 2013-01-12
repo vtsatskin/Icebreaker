@@ -1,28 +1,37 @@
 $(document).ready(function() {
 
   $('#group-search').keyup(function() {
+    
     var query = $(this).val();
 
     if (autoSearch) {
       autoSearch.abort();
     }
 
+    if (query == "") {
+      $('.create-group').slideUp();
+    }
+    else {
+      $('#create-group-btn').text('create ' + query);
+      $('.create-group').slideDown();
+    }
+
     var autoSearch = $.ajax({
-      type: 'POST',
+      type: 'GET',
       url: '/search',
       data: {
         query: query
       },
-      success: function(groupArray) {
-        if(groupArray.length === 0) {
-          $('.create-group').slideDown();
-        } else {
+      success: function(data) {
+        $('#room-search').html(data)
+        if ($('#room-search').children(0).children(0).text() == query) {
           $('.create-group').slideUp();
         }
       }
-
     });
   });
+
+  $('#group-search').keyup();
 
   $('#create-group-btn').click(function() {
     $.ajax({
@@ -31,20 +40,23 @@ $(document).ready(function() {
       data: {
         name: $('#group-search').val()
       },
-      succes: function(data) {
-        $('#group-search').after(data)
+      success: function(data) {
+        $('#room-search').prepend(data);
       }
     })
   })
 
-  $('.group-name').click(function() {
-    $('users-title').text(this.text());
+  $('.room').click(function() {
+    alert('up');
+    $('#users-title').text(this.text());
   })
 
   $('#recommend a').click(function() {
     $('#group-search').val(this.text);
     $('#group-search').keyup();
   })
+
+
 
   $('.person').click(function() {
     var $self = $(this);

@@ -13,22 +13,37 @@ get '/' do
   erb :index
 end
 
-post '/search' do
-  []
+get '/search' do
+  params[:query]
+  @rooms = [
+    {
+      :id => '1',
+      :name => 'Hackathon',
+      :people => '32'
+    },
+    {
+      :id => '2',
+      :name => 'uWaterloo',
+      :people => '10'
+    }
+  ]
+  erb :roomlist, :layout => false
 end
 
 post '/create' do
-  [] #todo: create room code here
+  @name = params[:name]
+  @rooms = [
+    {
+      :id => '3',
+      :name => @name,
+      :people => '0'
+    }
+  ]
+  erb :roomlist, :layout => false
 end
 
-get '/result' do
-  @test = "fuck shit up"
-  @me = {
-    :first_name => 'Amir',
-    :likes => 'Basketball, Laptops, Computer Programming',
-    :age => '17',
-    :location => 'Waterloo'
-  }
+get '/room' do
+  params[:roomname]
   @matches = [
     {
       :picture => 'https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash3/s160x160/553713_444178572296897_1480691611_a.jpg',
@@ -61,6 +76,10 @@ get '/result' do
       :intro => 'You know what i think is cool? NFC'
     }
   ]
+  erb :userlist, :layout => false
+end
+
+get '/result' do
   erb :result
 end
 
