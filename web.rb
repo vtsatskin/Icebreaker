@@ -17,18 +17,7 @@ end
 
 get '/search' do
   params[:query]
-  @rooms = [
-    {
-      :id => '1',
-      :name => 'Hackathon',
-      :people => '32'
-    },
-    {
-      :id => '2',
-      :name => 'uWaterloo',
-      :people => '10'
-    }
-  ]
+  @rooms = Room.all
   erb :roomlist, :layout => false
 end
 

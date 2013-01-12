@@ -5,4 +5,8 @@ class Room
   property :name,       String, :required => true
   property :password,   String
   has n, :users, :through => Resource
+
+  def people
+    self.users.count
+  end
 end
