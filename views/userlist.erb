@@ -24,7 +24,7 @@
   var iterator = null;
   var iteratorIndex = 0;
 
-  <% if p && p[:mutual_likes].nil? %>
+  <% if p && !p[:mutual_likes].nil? %>
     var hoverOver = function() {
       var self = $(this);
       iterator = setInterval(function() {
