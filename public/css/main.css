@@ -106,6 +106,14 @@ h3 {
   -webkit-transition: opacity 250ms;
 }
 
+.person-info > span {
+  display: none;
+}
+
+.person-info > span:first-child {
+  display: block;
+}
+
 .person-info:hover {
   opacity: 1;
   cursor: pointer;

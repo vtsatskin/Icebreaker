@@ -1,5 +1,7 @@
 <% if @matches.empty? %>
-  <h4>Looks like your the first to this page.</h4>
+  <h4>
+    You're the first member of this group. Invite others to check out your matches.
+  </h4>
 <% end %>
 <% @matches.each do |p|%>
   <div class="person" style=" background-image: url(<%= p[:picture] %>)" fblink="<%= p[:url] %>">
@@ -7,7 +9,8 @@
       <%= p[:name] %>
     </h4>
     <div class="person-info" primary="<%= p[:intro] %>" secondary="moredata">
-      <span><%= p[:intro] %></span>
+      <span><%= p[:intro] || 'first' %></span>
+      <span><%= p[:mutual_likes] || 'second' %></span>
     </div>
   </div>
 <% end %>
@@ -16,17 +19,39 @@
   $('.person').click(function() {
     var $self = $(this);
     window.location = $self.attr('fblink');
-  })
+  });
 
-    $('.person').hover(function() {
-        var $self = $(this);
-        var t = setTimeout(function() {
-          $self.find('span').fadeout(200,$(this).html($self.find('.person-info').attr('secondary').fadein(200))
-        }, 2000);
-      }, {
-        $(this).html($self.find('.person-info').attr('primary'))
+  var iterator = null;
+  var iteratorIndex = 0;
+
+  var hoverOver = function() {
+    var self = $(this);
+    iterator = setInterval(function() {
+      var max = self.find('.person-info span').length - 1;
+
+      if((iteratorIndex % 2 ) === 1) {
+
+        self.find('.person-info span:last').fadeOut(250, function() {
+          self.find('.person-info span:first').eq(iteratorIndex).fadeIn(250);
+        });
+      } else {
+        sself.find('.person-info span:first').fadeOut(250, function() {
+          self.find('.person-info span:last').eq(iteratorIndex).fadeIn(250);
+        });
       }
-    }
 
-  })
+      iteratorIndex++;
+      if(iteratorIndex > max) {
+        iteratorIndex = 0;
+      }
+    }, 760);
+  }
+
+  var hoverAway = function() {
+    clearInterval(iterator);
+    iterator = null;
+  }
+
+  $('.person').hover(hoverOver, hoverAway);
+
 </script>

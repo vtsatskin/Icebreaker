@@ -67,7 +67,7 @@ class User
         :picture => h[:user].profile_picture,
         :url => h[:user].profile_url,
         :name => h[:user].name,
-        :intro => 'tbd'
+        :intro => 'atasdasdas'
       }
     end
   end

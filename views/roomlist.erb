@@ -19,7 +19,6 @@
 
 		$('#search-view-loader').show();
 		$('#search-view').load('/room/' + roomname, function(data) {
-			alert('fade');
 		  $(this).hide().fadeIn(500);
 		  $('#search-view-loader').hide();
 		});
