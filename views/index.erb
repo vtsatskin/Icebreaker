@@ -17,12 +17,11 @@
     });
 
     // Additional init code here
-    $(
     FB.getLoginStatus(function(response) {
       if (response.status === 'connected') {
         // connected
         console.log('connected');
-        window.location.href = AUTH_URL;
+        login();
       } else if (response.status === 'not_authorized') {
         // not_authorized
         console.log('not authorized');
