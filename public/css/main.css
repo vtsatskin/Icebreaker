@@ -129,6 +129,8 @@ h3 {
   position: absolute;
   width: 160px;
   margin-top: 127px;
+  height: 25px;
+  overflow: hidden;
 }
 
 .person h4 a {
