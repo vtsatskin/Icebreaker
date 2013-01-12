@@ -2,11 +2,11 @@ class User
   include DataMapper::Resource
  
   property :id,             String, :key => true
+  property :profile_url,    URI
   property :gender,         String
   property :single,         Boolean
   property :relationship,   String
-  property :first_name,     String
-  property :last_name,      String
+  property :name,           String
   property :email,          String
   property :hometown,       String
   property :current_city,   String
