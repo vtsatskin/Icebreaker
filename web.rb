@@ -4,7 +4,7 @@ require "sinatra/content_for"
 require "sinatra/reloader" if development?
 
 configure :development do
-  DataMapper.setup :development, 'sqlite://db/icebreak_development'
+  DataMapper.setup :default, 'sqlite://db/icebreak_development.db'
 end
 
 get '/' do
