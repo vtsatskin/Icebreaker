@@ -1,5 +1,9 @@
 Bundler.require()
 
+configure :development do
+  DataMapper.setup :development, 'sqlite://db/icebreak_development'
+end
+
 get '/' do
   erb :index
 end
