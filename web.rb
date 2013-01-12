@@ -3,11 +3,13 @@ require "sinatra"
 require "sinatra/content_for"
 require "sinatra/reloader" if development?
 
+$stdout.sync = true
+
 # Require Models
-#DataMapper.setup :default, ENV['DB_PATH']
-#Dir[Dir.pwd + '/models/*.rb'].each { |file| require file }
-#DataMapper.auto_upgrade!
-#DataMapper.finalize
+DataMapper.setup :default, ENV['DB_PATH']
+Dir[Dir.pwd + '/models/*.rb'].each { |file| require file }
+DataMapper.auto_upgrade!
+DataMapper.finalize
 
 get '/' do
   erb :index
