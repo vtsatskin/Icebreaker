@@ -25,13 +25,14 @@ h1 {
 }
 
 .person {
+  cursor: pointer;
   display: inline-block;
   vertical-align: top;
   width: 160px;
   height: 160px;
   margin: 0;
   margin-bottom: 5px;
-  background: url('https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn1/c44.44.550.550/s160x160/45365_10152319247320484_1066354769_n.jpg');
+  background-size: cover;
 }
 
 .profile-pic {
@@ -49,7 +50,6 @@ h1 {
   width: 144px;
   height: 99px;
   padding: 14px 8px;
-  margin-top: 33px;
   opacity: 0;
   line-height: 15px;
   text-align: center;
@@ -70,6 +70,7 @@ h1 {
   padding: 4px 0;
   position: absolute;
   width: 160px;
+  margin-top: 127px;
 }
 
 .person h4 a {

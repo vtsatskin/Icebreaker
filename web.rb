@@ -31,24 +31,34 @@ get '/result' do
   }
   @matches = [
     {
+      :picture => 'https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash3/s160x160/553713_444178572296897_1480691611_a.jpg',
+      :url => 'https://www.facebook.com/reza.amiracle',
       :name => 'Amir Sharif',
-      :likes => ['cereal', 'programming', 'laptops']
+      :intro => 'hows working at vidyard'
     },
     {
-      :name => 'Johnny Smith',
-      :likes => ['cereal', 'poo', 'laptops']
+      :picture => 'https://fbcdn-profile-a.akamaihd.net/hprofile-ak-snc6/s160x160/196911_10151251142278101_2049639322_a.jpg',
+      :url => 'https://www.facebook.com/nick.mostowich',
+      :name => 'Nick Mostowich',
+      :intro => 'how does it feel to do weed'
     },
     {
-      :name => 'Johnny Smith',
-      :likes => ['cereal', 'poo', 'laptops']
+      :picture => 'https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn1/s160x160/45365_10152319247320484_1066354769_a.jpg',
+      :url => 'https://www.facebook.com/vtsatskin',
+      :name => 'Valentin Foreskin',
+      :intro => 'so how about those long term relationships huh'
     },
     {
-      :name => 'Johnny Smith',
-      :likes => ['cereal', 'poo', 'laptops']
+      :picture => 'https://fbcdn-profile-a.akamaihd.net/hprofile-ak-snc6/s160x160/223049_10150260199183581_3390501_n.jpg',
+      :url => 'https://www.facebook.com/lesia.nalepa',
+      :name => 'Lesia Nalepa',
+      :intro => 'lets go baby'
     },
     {
-      :name => 'Johnny Smith',
-      :likes => ['cereal', 'poo', 'laptops']
+      :picture => 'https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn1/s160x160/543939_10152317556485338_322316796_a.jpg',
+      :url => 'https://www.facebook.com/charlottechan19',
+      :name => 'Charlotte Chan',
+      :intro => 'You know what i think is cool? NFC'
     }
   ]
   erb :result

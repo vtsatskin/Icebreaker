@@ -11,12 +11,12 @@
   <div class="container">
     <div class="row">
       <div class="span6">
-        <div class="well">
+<!--         <div class="well">
           <h2><img class="profile-pic" src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn1/c44.44.550.550/s160x160/45365_10152319247320484_1066354769_n.jpg" alt="me"/>Hello, <%= @me[:first_name] %></h2>
-        </div>
+        </div> -->
         <div class="well">
           <h3>Search for groups</h3>
-          <h4>when you join a group we'll show you people in that group that you have similar interests with.</h4>
+          <h4>Join one to break the ice with those around</h4>
           <input id="group-search" type="text" class="span5" placeholder="Group name">
           <div class="create-group">
             &nbsp;We can't find that group. Why not <a href="javascript:void(0)" id="create-group-btn" >create it</a>?
@@ -27,19 +27,17 @@
       <div class="span6">
         <div id="matches" class="well">
           <h3 id="users-title" >Choose a room</h3>
-          <h4>Click on a user to find out more details.</h4>
+          <h4>Click someone you like for their facebook</h4>
 
           <!-- code for a single person -->
           <div id="search-view">
-
             <% @matches.each do |p|%>
-              <div class="person">
+              <div class="person" style=" background-image: url(<%= p[:picture] %>)" fblink="<%= p[:url] %>">
                 <h4 class="name">
                   <%= p[:name] %>
-                  <a href="javascript:void(0)"></a>
                 </h4>
                 <div class="person-info">
-                  Hi, I'm John. I'm 18 years old and like to <b>ski</b>, <b>listen to music</b>. I live in <b>Waterloo</b> and also enjoy <b>dancing</b>
+                  <%= p[:intro] %>
                 </div>
               </div>
             <% end %>

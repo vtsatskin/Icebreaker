@@ -45,6 +45,11 @@ $(document).ready(function() {
     $('#group-search').val(this.text);
     $('#group-search').keyup();
   })
+
+  $('.person').click(function() {
+    var $self = $(this);
+    window.location = $self.attr('fblink');
+  })
   
 
 
