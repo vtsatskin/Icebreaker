@@ -2,6 +2,7 @@ class User
   include DataMapper::Resource
  
   property :id,             String, :key => true
+  property :session_id,     String, :length => 500
   property :profile_url,    String
   property :gender,         String
   property :single,         Boolean
@@ -24,6 +25,21 @@ class User
   has n, :beliefs
   has n, :interests
   has n, :workhistorys
+
+  def self.get_or_create_by_fbid(fbid, api)
+    if u = User.get(fbid)
+      u
+    else
+      me = api.get_object("me")
+      u = User.create({
+        :id => me['id'],
+        :name => me['name'],
+        :profile_url => me['link'],
+        :gender => me['gender'],
+        :session_id => cookies['rack.session']
+      })
+    end
+  end
 
   def get_likes_from_graph graph
     likes = graph.get_connections("me", "likes")
