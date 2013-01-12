@@ -11,10 +11,10 @@
 function login() {
   FB.login(function(response) {
       if (response.authResponse) {
-          // connected
-          window.location.href = "/result";
+        // connected
+        window.location.href = AUTH_URL;
       } else {
-          // cancelled
+        // cancelled
       }
   });
 }

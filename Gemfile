@@ -2,6 +2,7 @@ source :rubygems
 gem 'sinatra'
 gem 'sinatra-contrib'
 gem 'bundler'
+gem 'koala'
 
 gem 'data_mapper', '1.2.0'
 

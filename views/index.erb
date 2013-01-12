@@ -2,6 +2,7 @@
   <div id="fb-root"></div>
   <script>
   // Additional JS functions here
+  var AUTH_URL = "/authenticated";
   window.fbAsyncInit = function() {
     FB.init({
       appId      : '<%= ENV['FB_APP_ID'] %>', // App ID
@@ -16,13 +17,15 @@
       if (response.status === 'connected') {
         // connected
         console.log('connected');
-        window.location.href = "/result";
+        window.location.href = AUTH_URL;
       } else if (response.status === 'not_authorized') {
         // not_authorized
         console.log('not authorized');
+        $("#home-container").show();
       } else {
         // not_logged_in
         console.log('not logged in');
+        $("#home-container").show();
       }
     });
   };
@@ -37,7 +40,7 @@
    }(document));
 </script>
   <script src="//connect.facebook.net/en_US/all.js"></script>
-  <div class="container">
+  <div id="home-container" class="container" style="display: none;">
 
     <div class="jumbotron">
       <h1>Icebreaker</h1>

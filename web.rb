@@ -24,6 +24,13 @@ get '/result' do
   erb :result
 end
 
+get '/authenticated' do
+  koala = Koala::Facebook::OAuth.new(ENV['FB_APP_ID'], ENV['FB_APP_SECRET'])
+
+  puts cookies
+  erb :authenticated
+end
+
 get '/logintest' do
   erb :logintest
 end
