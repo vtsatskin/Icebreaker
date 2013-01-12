@@ -114,7 +114,7 @@ get '/search' do
   setup_user cookies, session
   if logged_in?
     params[:query]
-    @rooms = Room.all(:name.like => params[:query]).sort_by! { |r| -r.people }
+    @rooms = Room.all(:name.like => "%" + params[:query] + "%").sort_by! { |r| -r.people }
     erb :roomlist, :layout => false
   end
 end
