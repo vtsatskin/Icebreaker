@@ -1,11 +1,8 @@
 $(document).ready(function() {
 
-  $('#search-view-loader').show();
   var roomname = $.trim($('#users-title').text());
   $('#search-view').load('/room/' + roomname, function(data) {
-    alert('fadeee');
     $(this).hide().fadeIn(500);
-    $('#search-view-loader').hide();
   });
 
   $('#group-search').keyup(function() {
