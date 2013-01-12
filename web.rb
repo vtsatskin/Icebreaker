@@ -4,10 +4,10 @@ require "sinatra/content_for"
 require "sinatra/reloader" if development?
 
 # Require Models
-DataMapper.setup :default, ENV['DB_PATH']
-Dir[Dir.pwd + '/models/*.rb'].each { |file| require file }
-DataMapper.auto_upgrade!
-DataMapper.finalize
+#DataMapper.setup :default, ENV['DB_PATH']
+#Dir[Dir.pwd + '/models/*.rb'].each { |file| require file }
+#DataMapper.auto_upgrade!
+#DataMapper.finalize
 
 get '/' do
   erb :index
@@ -19,6 +19,12 @@ end
 
 get '/result' do
   @test = "fuck shit up"
+  @me = {
+    :first_name => 'Amir',
+    :likes => 'Basketball, Laptops, Computer Programming',
+    :age => '17',
+    :location => 'Waterloo'
+  }
   @matches = [
     {
       :name => 'Amir Sharif',

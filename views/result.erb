@@ -12,7 +12,11 @@
     <div class="row">
       <div class="span6">
         <div class="well">
+          <h2><img class="profile-pic" src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn1/c44.44.550.550/s160x160/45365_10152319247320484_1066354769_n.jpg" alt="me"/>Hello, <%= @me[:first_name] %></h2>
+        </div>
+        <div class="well">
           <h3>Search for groups</h3>
+          <h4>when you join a group we'll show you people in that group that you have similar interests with.</h4>
           <input id="group-search" type="text" class="span5" placeholder="Group name">
           <div class="create-group">
             &nbsp;We can't find that group. Why not <a href="javascript:void(0)" id="create-group-btn" >create it</a>?
@@ -35,7 +39,7 @@
                   <a href="javascript:void(0)"></a>
                 </h4>
                 <div class="person-info">
-                  Likes to get down. Lives near you. Enjoys cereal. Will never let you down.
+                  Hi, I'm John. I'm 18 years old and like to <b>ski</b>, <b>listen to music</b>. I live in <b>Waterloo</b> and also enjoy <b>dancing</b>
                 </div>
               </div>
             <% end %>
