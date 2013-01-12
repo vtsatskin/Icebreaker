@@ -113,8 +113,7 @@ end
 get '/search' do
   setup_user cookies, session
   if logged_in?
-    params[:query]
-    @rooms = Room.all(:name.like => "%" + params[:query] + "%").sort_by! { |r| -r.people }
+    @rooms = Room.all({:name.like => "%" + params[:query] + "%"}).sort_by! { |r| -r.people }
     erb :roomlist, :layout => false
   end
 end
@@ -122,8 +121,13 @@ end
 post '/create' do
   setup_user cookies, session
   if logged_in?
-    @rooms = [ Room.create({:name => params[:name]}) ]
-    erb :roomlist, :layout => false
+    params[:roomname].remove(' ')
+    if r = Room.first(:name => params[:roomname])
+      return [403, 'group already exists']
+    else
+      @rooms = [ Room.create({:name => params[:name]}) ]
+      erb :roomlist, :layout => false
+    end
   end
 end
 
@@ -168,8 +172,6 @@ get '/room' do
 
     @matches = current_user.get_room
     erb :userlist, :layout => false
-  else
-    "check out /r/spacedicks"
   end
 end
 
@@ -185,7 +187,8 @@ end
 get '/:name' do
   setup_user cookies, session
   if logged_in?
-    @roomTitle = "404"
+    @roomTitle = params[:name]
+    @exists = Room.first(:name => params[:roomname]) ? true : false
     erb :home
   else
     redirect :/
