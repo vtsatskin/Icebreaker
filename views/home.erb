@@ -15,7 +15,7 @@
         <div class="well">
           <h3>Search for groups</h3>
           <h4>Join one to break the ice with those around</h4>
-          <input id="group-search" type="text" class="span5" placeholder="Group name">
+          <input id="group-search" type="text" class="span5" placeholder="Group name" value="<%= @roomTitle %>">
           <div class="create-group">
             &nbsp;You can also <a href="javascript:void(0)" id="create-group-btn" ></a>
           </div>
@@ -26,8 +26,16 @@
       
       <div class="span6">
         <div id="matches" class="well">
-          <h3 id="users-title" ><%= @roomTitle? @roomTitle : 'Choose a Room' %></h3>
-          <h4>Hover for icebreaker, click for facebook</h4>
+          <h3 id="users-title" ><%= @roomTitle? @roomTitle : 'Choose a Group' %></h3>
+          <% if @roomTitle %>
+            <% if @exists %>
+              <h4>Hover for icebreaker, click for facebook</h4>
+            <% else %>
+              <h4>Not found, so we searched it for you</h4>
+            <% end %>
+          <%else%>
+            <h4>To break the ice with its members</h4>
+          <%end%>
           <div id="search-view"> </div>
         </div>
       </div>

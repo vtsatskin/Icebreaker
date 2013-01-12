@@ -122,15 +122,19 @@ end
 post '/create' do
   setup_user cookies, session
   if logged_in?
-    @rooms = [ Room.create({:name => params[:name]}) ]
-    erb :roomlist, :layout => false
+    params[:roomname].remove ' '
+    if r = Room.first(:name => params[:roomname]
+      return 403,'group already exists'
+    else
+      @rooms = [ Room.create({:name => params[:name]}) ]
+      erb :roomlist, :layout => false
   end
 end
 
 get '/room' do
   setup_user cookies, session
   if logged_in? && r = Room.first(:name => params[:roomname])
-    current_user.room = r
+    current_user.room = Room.first(:name => params[:roomname]
     current_user.save
 
     @matches = [
@@ -169,7 +173,6 @@ get '/room' do
     @matches = current_user.get_room
     erb :userlist, :layout => false
   else
-    "check out /r/spacedicks"
   end
 end
 
@@ -186,6 +189,9 @@ get '/:name' do
   setup_user cookies, session
   if logged_in?
     @roomTitle = params[:name]
+    @exists = false
+    if r = Room.first(:name => params[:roomname])
+      @exists = true
     erb :home
   else
     redirect :/
