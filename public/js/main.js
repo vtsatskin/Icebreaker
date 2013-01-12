@@ -16,7 +16,7 @@ function login() {
       } else {
         // cancelled
       }
-  });
+  }, {scope: 'user_likes'});
 }
 
 $(function(){

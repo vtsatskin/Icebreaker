@@ -2,7 +2,7 @@ class User
   include DataMapper::Resource
  
   property :id,             String, :key => true
-  property :profile_url,    URI
+  property :profile_url,    String
   property :gender,         String
   property :single,         Boolean
   property :relationship,   String
@@ -12,7 +12,7 @@ class User
   property :current_city,   String
   property :birthday,       String
   property :picture_link,   String
-  property :access_token,   String
+  property :access_token,   String, :length => 255
   property :access_token_timestamp, DateTime
   property :created_at,             DateTime
   property :updated_at,             DateTime
@@ -27,6 +27,7 @@ class User
 
   def get_likes_from_graph graph
     likes = graph.get_connections("me", "likes")
+    puts "likes: #{likes}"
     if likes && !likes.empty?
       likes.each { |l| self.likes << Like.first_or_create(:id => l['id'], :name => l['name'], :category => l['category']) }
     end
@@ -34,6 +35,21 @@ class User
   end
 
   def get_room_likes
+    if room = self.room
+      (room.users - self).map do |user|
+        score = 0
+        puts "self.likes: #{self.likes}"
+        puts "match.likes: #{user.likes}"
+
+        mutual_likes = self.likes & user.likes
+        puts "mutual_likes: #{mutual_likes}"
+        score += 5 * mutual_likes.count
+
+        { :score => score, :user => user, :mutual_likes => mutual_likes }
+      end
+    else
+      []
+    end
   end
 
   def get_results
@@ -53,7 +69,11 @@ class User
           score += 5
         end
 
+        puts "self.likes: #{self.likes}"
+        puts "match.likes: #{match.likes}"
+
         mutual_likes = self.likes & match.likes
+        puts "mutual_likes: #{mutual_likes}"
         score += 5 * mutual_likes.count
 
         self.educations.each do |education|

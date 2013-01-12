@@ -90,18 +90,25 @@ get '/authenticated' do
   koala = Koala::Facebook::OAuth.new(ENV['FB_APP_ID'], ENV['FB_APP_SECRET'])
   user_details = koala.get_user_info_from_cookies(cookies)
 
+  puts "gah"
   if user_details
+    puts "user details"
     graph = Koala::Facebook::API.new(user_details['access_token'])
     me = graph.get_object("me")
 
     # Only update user data once
     unless u = User.get(me['id'])
+      puts "in"
       u = User.create({
           :id => me['id'],
           :name => me['name'],
           :profile_url => me['link'],
-          :gender => me['gender']
+          :gender => me['gender'],
+          :access_token => user_details['access_token']
         })
+      puts "wtf"
+      puts u.save 
+      puts u.errors.full_messages
       u.get_likes_from_graph graph
     end
     u
