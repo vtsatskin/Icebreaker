@@ -114,7 +114,7 @@ get '/search' do
   setup_user
   if logged_in?
     params[:query]
-    @rooms = Room.all(:name =>  params[:query]).sort_by! { |r| -r.people }
+    @rooms = Room.all(:name.like => params[:query]).sort_by! { |r| -r.people }
     erb :roomlist, :layout => false
   end
 end
@@ -185,7 +185,7 @@ end
 get '/:name' do
   setup_user
   if logged_in?
-    @roomTitle = "404"
+    @roomTitle = params[:name]
     erb :home
   else
     redirect :/
