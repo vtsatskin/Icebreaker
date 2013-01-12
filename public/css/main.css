@@ -1,15 +1,15 @@
 body {
-  background:url('../img/lightpaperfibers.png');
+  /*background:url('../img/lightpaperfibers.png');*/
 }
 
 h1 {
   text-shadow: 0px 0px 5px white;
-  color: #9F5050;
+  color: #9F5050 !important;
 }
 
 h3 {
   margin-bottom: -20px !important;
-  color: #9F5050;
+  color: #9F5050 !important;
 }
 
 .jumbotron {
