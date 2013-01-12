@@ -121,8 +121,7 @@ end
 post '/create' do
   setup_user cookies, session
   if logged_in?
-    params[:roomname].remove(' ')
-    if r = Room.first(:name => params[:roomname])
+    if r = Room.first(:name => params[:roomname].remove(' ').downcase!
       return [403, 'group already exists']
     else
       @rooms = [ Room.create({:name => params[:name]}) ]
