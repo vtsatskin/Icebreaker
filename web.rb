@@ -51,16 +51,28 @@ get '/result' do
 end
 
 get '/authenticated' do
-  @koala = Koala::Facebook::OAuth.new(ENV['FB_APP_ID'], ENV['FB_APP_SECRET'])
-  user_details = @koala.get_user_info_from_cookies(cookies)
+  koala = Koala::Facebook::OAuth.new(ENV['FB_APP_ID'], ENV['FB_APP_SECRET'])
+  user_details = koala.get_user_info_from_cookies(cookies)
+
   if user_details
-    @graph = Koala::Facebook::API.new(user_details['access_token'])
-    @graph.get_object("me")
+    graph = Koala::Facebook::API.new(user_details['access_token'])
+    me = graph.get_object("me")
+
+    # Only update user data once
+    unless u = User.get(me['id'])
+      u = User.create({
+          :id => me['id'],
+          :name => me['name'],
+          :profile_url => me['link'],
+          :gender => me['gender']
+        })
+    end
+    u
   else
     "something fucked up"
   end
 
-  erb :authenticated
+  # erb :authenticated
 end
 
 get '/logintest' do
