@@ -81,7 +81,7 @@ get '/room' do
   erb :userlist, :layout => false
 end
 
-get '/home' do
+get '/authenticated' do
   koala = Koala::Facebook::OAuth.new(ENV['FB_APP_ID'], ENV['FB_APP_SECRET'])
   user_details = koala.get_user_info_from_cookies(cookies)
 
@@ -104,6 +104,10 @@ get '/home' do
     "something fucked up"
   end
 
+  redirect :home
+end
+
+get '/home' do
   erb :home
 end
 

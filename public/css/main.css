@@ -69,9 +69,9 @@ h3 {
   background: rgba(22, 22, 22, 0.5);
   color: #fff;
   z-index: 100;
-  width: 144px;
+  width: 132px;
   height: 99px;
-  padding: 14px 8px;
+  padding: 14px 14px;
   opacity: 0;
   line-height: 15px;
   text-align: center;
