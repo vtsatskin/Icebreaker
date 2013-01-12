@@ -1,0 +1,83 @@
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="321" measuredH="549" mockupW="282" mockupH="510">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::iPhone" x="39" y="39" w="-1" h="-1" measuredW="282" measuredH="510" zOrder="0" locked="false" isInGroup="-1"/>
+    <control controlID="2" controlTypeID="com.balsamiq.mockups::SubTitle" x="75" y="159" w="-1" h="-1" measuredW="122" measuredH="33" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Within%2020m</text>
+      </controlProperties>
+    </control>
+    <control controlID="3" controlTypeID="com.balsamiq.mockups::RoundButton" x="197" y="167" w="20" h="16" measuredW="32" measuredH="32" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <backgroundAlpha>1</backgroundAlpha>
+        <color>0</color>
+        <shape>triangle</shape>
+        <shapeRotation>180</shapeRotation>
+      </controlProperties>
+    </control>
+    <control controlID="6" controlTypeID="com.balsamiq.mockups::Webcam" x="79" y="282" w="42" h="41" measuredW="177" measuredH="146" zOrder="4" locked="false" isInGroup="-1"/>
+    <control controlID="7" controlTypeID="com.balsamiq.mockups::SubTitle" x="123" y="280" w="-1" h="-1" measuredW="49" measuredH="33" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Nick</text>
+      </controlProperties>
+    </control>
+    <control controlID="8" controlTypeID="com.balsamiq.mockups::Label" x="125" y="304" w="-1" h="-1" measuredW="106" measuredH="21" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>32%20Mutual%20Friends</text>
+      </controlProperties>
+    </control>
+    <control controlID="9" controlTypeID="com.balsamiq.mockups::Webcam" x="79" y="342" w="42" h="41" measuredW="177" measuredH="146" zOrder="7" locked="false" isInGroup="-1"/>
+    <control controlID="10" controlTypeID="com.balsamiq.mockups::SubTitle" x="123" y="340" w="-1" h="-1" measuredW="68" measuredH="33" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Henry</text>
+      </controlProperties>
+    </control>
+    <control controlID="11" controlTypeID="com.balsamiq.mockups::Label" x="125" y="364" w="-1" h="-1" measuredW="134" measuredH="21" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Same%20birthday%20as%20you%21</text>
+      </controlProperties>
+    </control>
+    <control controlID="12" controlTypeID="com.balsamiq.mockups::Webcam" x="79" y="407" w="42" h="41" measuredW="177" measuredH="146" zOrder="10" locked="false" isInGroup="-1"/>
+    <control controlID="13" controlTypeID="com.balsamiq.mockups::SubTitle" x="123" y="405" w="-1" h="-1" measuredW="41" measuredH="33" zOrder="11" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Will</text>
+      </controlProperties>
+    </control>
+    <control controlID="14" controlTypeID="com.balsamiq.mockups::Label" x="125" y="429" w="-1" h="-1" measuredW="141" measuredH="21" zOrder="12" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Went%20to%20your%20highschool</text>
+      </controlProperties>
+    </control>
+    <control controlID="15" controlTypeID="com.balsamiq.mockups::Label" x="95" y="183" w="-1" h="-1" measuredW="86" measuredH="21" zOrder="13" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>true</bold>
+        <href>mobileroomsnearby%26bm%3Bmobileroomsnearby.bmml%26bm%3Bmobileroomsnearby.bmml%26bm%3Bmobileroomsnearby.bmml</href>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%2256%2C144%2C142%2C165%22%20href%3D%22mobileroomsnearby.bmml%22%20alt%3D%22mobileroomsnearby%22%20id%3D%2215%22/%3E</map>
+        <text>or%20get%20a%20room</text>
+      </controlProperties>
+    </control>
+    <control controlID="16" controlTypeID="com.balsamiq.mockups::Icon" x="79" y="185" w="-1" h="-1" measuredW="16" measuredH="16" zOrder="14" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>ContactsIcon%7Cxsmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="17" controlTypeID="__group__" x="79" y="221" w="145" h="45" measuredW="145" measuredH="45" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <href>mobileperson%26bm%3Bmobileperson.bmml%26bm%3Bmobileperson.bmml%26bm%3Bmobileperson.bmml</href>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%2240%2C182%2C185%2C227%22%20href%3D%22mobileperson.bmml%22%20alt%3D%22mobileperson%22%20id%3D%2217%22/%3E</map>
+      </controlProperties>
+      <groupChildrenDescriptors>
+        <control controlID="0" controlTypeID="com.balsamiq.mockups::Webcam" x="0" y="2" w="42" h="41" measuredW="177" measuredH="146" zOrder="0" locked="false" isInGroup="17"/>
+        <control controlID="1" controlTypeID="com.balsamiq.mockups::SubTitle" x="44" y="0" w="-1" h="-1" measuredW="87" measuredH="33" zOrder="1" locked="false" isInGroup="17">
+          <controlProperties>
+            <text>Valentin</text>
+          </controlProperties>
+        </control>
+        <control controlID="2" controlTypeID="com.balsamiq.mockups::Label" x="46" y="24" w="-1" h="-1" measuredW="99" measuredH="21" zOrder="2" locked="false" isInGroup="17">
+          <controlProperties>
+            <text>Likes%20Linkin%20Park</text>
+          </controlProperties>
+        </control>
+      </groupChildrenDescriptors>
+    </control>
+  </controls>
+</mockup>
