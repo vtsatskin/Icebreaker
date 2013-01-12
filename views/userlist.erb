@@ -9,8 +9,8 @@
       <%= p[:name] %>
     </h4>
     <div class="person-info" primary="<%= p[:intro] %>" secondary="moredata">
-      <span><%= p[:intro] || 'first' %></span>
-      <span><%= p[:mutual_likes] || 'second' %></span>
+      <span><%= p[:intro] %></span>
+      <span><%= p[:mutual_likes].count.to_s + 'Mutual Likes' %></span>
     </div>
   </div>
 <% end %>
@@ -32,19 +32,16 @@
       if((iteratorIndex % 2 ) === 1) {
 
         self.find('.person-info span:last').fadeOut(250, function() {
-          self.find('.person-info span:first').eq(iteratorIndex).fadeIn(250);
+          self.find('.person-info span:first').fadeIn(250);
         });
       } else {
-        sself.find('.person-info span:first').fadeOut(250, function() {
-          self.find('.person-info span:last').eq(iteratorIndex).fadeIn(250);
+        self.find('.person-info span:first').fadeOut(250, function() {
+          self.find('.person-info span:last').fadeIn(250);
         });
       }
 
       iteratorIndex++;
-      if(iteratorIndex > max) {
-        iteratorIndex = 0;
-      }
-    }, 760);
+    }, 1200);
   }
 
   var hoverAway = function() {
