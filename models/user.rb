@@ -17,11 +17,15 @@ class User
   property :updated_at,             DateTime
   has 1, :room, :through => Resource
   has n, :users, self, :through => :room
-  has n, :likes
+  has n, :likes, :through => Resource
   has n, :educations
   has n, :games
   has n, :events
   has n, :beliefs
   has n, :interests
   has n, :workhistorys
+
+  def get_likes_from_fb
+
+  end
 end

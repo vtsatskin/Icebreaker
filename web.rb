@@ -60,6 +60,7 @@ get '/authenticated' do
           :profile_url => me['link'],
           :gender => me['gender']
         })
+      u.get_likes_from_graph graph
     end
     u
   else
