@@ -67,7 +67,8 @@ class User
         :picture => h[:user].profile_picture,
         :url => h[:user].profile_url,
         :name => h[:user].name,
-        :intro => 'atasdasdas'
+        :mutual_likes => h[:mutual_likes],
+        :intro => get_icebreakers(h[:user], h[:mutual_likes])
       }
     end
   end
@@ -88,6 +89,45 @@ class User
 
   def profile_picture
     "http://graph.facebook.com/#{id}/picture?height=160&weight=160"
+  end
+
+  def get_icebreakers match, mutual_likes
+    sentence = String.new
+
+    case Random.rand(3)
+    when 1
+      if match.current_city_id == self.current_city_id
+        spot = ["restaurant", "bar", "spot"][Random.rand(3)]
+        sentence = "What's your favourite #{spot} in #{self.current_city_name}"
+      elsif match.hometown_id == self.hometown_id
+        intro = ["How long did you live in", "What's your favourite spot in", "Do you miss"][Random.rand(3)]
+        sentence = "#{intro} #{self.hometown_name}"
+      else
+        if mutual_likes.count > 0
+          sentence = "You both like #{mutual_likes[Random.rand(mutual_likes.count - 1)].name}."
+        else
+          sentence = "You don't seem to have much in common"
+        end
+      end
+    when 2
+      if match.birthday == self.birthday
+        sentence = "You have the same birthday!"
+      else
+        if mutual_likes.count > 0
+          sentence = "You both like #{mutual_likes[Random.rand(mutual_likes.count - 1)].name}."
+        else
+          sentence = "You don't seem to have much in common"
+        end
+      end
+    when 3
+      if mutual_likes.count > 0
+        sentence = "You both like #{mutual_likes[Random.rand(mutual_likes.count - 1)].name}."
+      else
+        sentence = "You don't seem to have much in common"
+      end
+    end
+
+    sentence
   end
 
   def get_results
@@ -140,44 +180,13 @@ class User
             score += 10
           end
         end
-        #GENERATE SENTENCE HERE
-        case Random.rand(3)
-        when 1
-          if match.current_city.id == self.current_city.id
-            spot = ["restaurant", "bar", "spot"][Random.rand(3)]
-            sentence = "What's your favourite #{spot} in #{self.current_city.name}"
-          elsif match.hometown.id == self.hometown.id
-            intro = ["How long did you live in", "What's your favourite spot in", "Do you miss"][Random.rand(3)]
-            sentence = "#{intro} #{self.hometown.name}"
-          else
-            if mutual_likes.count > 0
-              sentence = "You both like #{mutual_likes[Random.rand(mutual_likes.count - 1)].name}."
-            else
-              sentence = "You don't seem to have much in common"
-            end
-          end
-        when 2
-          if match.birthday == self.birthday
-            sentence = "You have the same birthday!"
-          else
-            if mutual_likes.count > 0
-              sentence = "You both like #{mutual_likes[Random.rand(mutual_likes.count - 1)].name}."
-            else
-              sentence = "You don't seem to have much in common"
-            end
-          end
-        when 3
-          if mutual_likes.count > 0
-            sentence = "You both like #{mutual_likes[Random.rand(mutual_likes.count - 1)].name}."
-          end
-          else
-            sentence = "You don't seem to have much in common"
-          end
-        end
+
+
         { :score => score, :sentence => sentence, :user => match, :mutual_likes => mutual_likes }
       end
     else
       []
+    end
   end
 
   def profile_picture(height = '160', width = '160')
