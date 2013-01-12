@@ -22,10 +22,6 @@ h1 {
   box-shadow: 0 0 0px 1px #AAA;
 }
 
-#matches {
-  display: none;
-}
-
 h3 {
   color: #30605E;
 }
@@ -55,8 +51,14 @@ h3 {
 
 .room {
   cursor: pointer;
-  margin-top: 15px;
-  margin-left: 10px;
+  margin-left: 8px;
+  padding: 8px 4px;
+  -webkit-transition: background-color 350ms, color 350ms;
+}
+
+.room:hover {
+  background-color: #2E8BCC;
+  color: #fff;
 }
 
 .room h4 {

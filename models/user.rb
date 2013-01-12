@@ -1,6 +1,6 @@
 class User
   include DataMapper::Resource
- 
+
   property :id,             String, :key => true
   property :session_id,     String, :length => 500
   property :profile_url,    String
@@ -176,5 +176,9 @@ class User
       end
     else
       []
+  end
+
+  def profile_picture(height = '160', width = '160')
+    "http://graph.facebook.com/#{id}/picture?height=#{height}&width=#{width}"
   end
 end

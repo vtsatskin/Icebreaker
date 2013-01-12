@@ -5,14 +5,14 @@
 	      <%= p.name %>
 	    </h4>
 	    <div class="room-count">
-	      <%= p.people %> People
+	      <%= p.people.to_s + (p.people==1 ? ' Person' : ' People') %>
 	    </div>
 	  </div>
 	<% end %>
 
-<script type="text/javascript"> 
+<script type="text/javascript">
 	$('.room').click(function(e) {
-		
+
 		var roomname = $(e.target).parent().attr('groupname');
 
 		window.history.pushState(null, roomname, "/" + roomname);
@@ -42,7 +42,7 @@
 	    });
 
 	})
-	
+
 </script>
 
 <% else %>
