@@ -121,8 +121,7 @@ end
 post '/create' do
   setup_user cookies, session
   if logged_in?
-    params[:roomname].delete(' ')
-    if r = Room.first(:name => params[:roomname])
+    if r = Room.first(:name => params[:roomname].delete(' ')).downcase!
       return [403, 'group already exists']
     else
       @rooms = [ Room.create({:name => params[:name]}) ]
@@ -188,7 +187,7 @@ get '/:name' do
   setup_user cookies, session
   if logged_in?
     @roomTitle = params[:name]
-    @exists = Room.first(:name => params[:roomname]) ? true : false
+    @exists = (r = Room.first(:name => params[:name])) ? true : false
     erb :home
   else
     redirect :/

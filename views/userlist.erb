@@ -3,8 +3,8 @@
     <h4 class="name">
       <%= p[:name] %>
     </h4>
-    <div class="person-info">
-      <%= p[:intro] %>
+    <div class="person-info" primary="<%= p[:intro] %>" secondary="moredata">
+      <span><%= p[:intro] %></span>
     </div>
   </div>
 <% end %>
@@ -13,5 +13,17 @@
   $('.person').click(function() {
     var $self = $(this);
     window.location = $self.attr('fblink');
+  })
+
+    $('.person').hover(function() {
+        var $self = $(this);
+        var t = setTimeout(function() {
+          $self.find('span').fadeout(200,$(this).html($self.find('.person-info').attr('secondary').fadein(200))
+        }, 2000); 
+      }, {  
+        $(this).html($self.find('.person-info').attr('primary'))
+      }
+    }
+      
   })
 </script>
