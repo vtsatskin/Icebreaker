@@ -15,12 +15,30 @@
           <h3>Search for groups</h3>
           <input id="group-search" type="text" class="span5" placeholder="Group name">
           <div class="create-group">
-            Make it yo!
+            <i class="icon-book"></i>We can't find that group. Why not <a href="javascript:void(0)" id="create-group-btn" >create it</a>?
           </div>
-          <p>Recommended: <b>universityofwaterloo</b>, <b>waterloo</b>, <b>starcraft</b></p>
+          <p>Recommended: <a href="#">universityofwaterloo</a>, <a href="#">waterloo</a>, <a href="#">starcraft</a></p>
         </div>
       </div>
-      <div class="span6">I have some content here as well</div>
+      <div class="span6">
+        <div id="matches" class="well">
+          <h3>Your matches</h3>
+          <h4>Click on a user to find out more details.</h4>
+
+          <!-- code for a single person -->
+          <div id="search-view">
+
+            <% @matches.each do |p|%>
+              <div class="person">
+                <h4>
+                  <%= puts p['name'] %>
+                </h4>
+              </div>
+            <% end %>
+          </div>
+
+        </div>
+      </div>
     </div>
   </div>
 <% end %>

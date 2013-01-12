@@ -11,3 +11,7 @@
 .create-group {
   display: none;
 }
+
+.person {
+  width: 50%;
+}
