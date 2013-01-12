@@ -38,7 +38,7 @@ $(document).ready(function() {
       success: function(data) {
         console.log(data);
         $('#room-search').html(data);
-        if ($('#room-search').children(0).children(0).html() == query) {
+        if ($.trim($('#room-search').children(0).children(0).html()) == query) {
           $('.create-group').slideUp();
         }
       }
