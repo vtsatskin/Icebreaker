@@ -24,7 +24,7 @@ DataMapper.finalize
     @current_user.id
   end
 
-  def setup_user
+  def setup_user cookies, session
     oauth = Koala::Facebook::OAuth.new(
       ENV['FB_APP_ID'],
       ENV['FB_APP_SECRET']
@@ -61,7 +61,7 @@ DataMapper.finalize
           @api = Koala::Facebook::API.new(info['access_token'])
           fbid = info.nil? ? false : info['user_id']
         
-          @current_user = User.get_or_create_by_fbid(fbid, @api)
+          @current_user = User.get_or_create_by_fbid(fbid, @api, session)
           @current_user.access_token = info['access_token']
           # @current_user.token_expire = Time.now.to_i + info['expires'].to_i
           puts @current_user.inspect
@@ -111,7 +111,7 @@ get '/' do
 end
 
 get '/search' do
-  setup_user
+  setup_user cookies, session
   if logged_in?
     params[:query]
     @rooms = Room.all(:name =>  params[:query]).sort_by! { |r| -r.people }
@@ -120,7 +120,7 @@ get '/search' do
 end
 
 post '/create' do
-  setup_user
+  setup_user cookies, session
   if logged_in?
     @rooms = [ Room.create({:name => params[:name]}) ]
     erb :roomlist, :layout => false
@@ -128,7 +128,7 @@ post '/create' do
 end
 
 get '/room' do
-  setup_user
+  setup_user cookies, session
   if logged_in? && r = Room.first(:name => params[:roomname])
     current_user.room = r
     current_user.save
@@ -174,7 +174,7 @@ get '/room' do
 end
 
 get '/home' do
-  setup_user
+  setup_user cookies, session
   if logged_in?
     erb :home
   else
@@ -183,7 +183,7 @@ get '/home' do
 end
 
 get '/:name' do
-  setup_user
+  setup_user cookies, session
   if logged_in?
     @roomTitle = "404"
     erb :home
